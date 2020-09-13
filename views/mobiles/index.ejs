@@ -1,0 +1,35 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	<div class="mobile_page">
+		<center><h2>Mobiles</h2><hr></center>
+		<center>
+			<% if(noMatch !== null) { %>
+            	<h3><%= noMatch %></h3>
+				<form action="/mobile" method="GET" class="form-inline">
+					<div class="form-group">
+						<input type="text" name="search" placeholder="Mobile, features search..." class="form-control">
+						<input type="submit" value="Search" class="btn btn-default">
+					</div>
+				</form>
+			<% } %>
+		</center>
+		<div class="row" style="display:flex; flex-wrap:wrap;">
+			<% mobiles.forEach(function(mobile){ %>
+				<div class="col-md-4 col-sm-6">
+					<div class="well well-lg">
+						<center>
+							<a href="#"><h3><%= mobile.brand %><br><%= mobile.name %></h3></a><br>
+							<h4 class="mobile_attributes">Color: <%= mobile.color %></h4>
+							<h4 class="mobile_attributes">Display Size: <%= mobile.display_size %> inches</h4>
+							<h4 class="mobile_attributes">Weight: <%= mobile.weight %> grams</h4>
+							<h4 class="mobile_attributes">Feature: <%= mobile.feature %></h4>
+						</center>
+					</div>
+				</div>
+			<% }) %>
+		</div>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>
